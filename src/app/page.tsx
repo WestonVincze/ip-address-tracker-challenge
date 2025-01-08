@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Map } from "@/components/Map";
+import { StatHighlights } from "@/components/StatHighlights";
 
 export default async function Home() {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -11,37 +12,33 @@ export default async function Home() {
   return (
     <div className="bg-[url('/pattern-bg-desktop.png')] bg-contain">
       {/* Title */}
-      <h1 className="text-center">IP Address Tracker</h1>
+      <h1 className="text-center text-3xl text-bold">IP Address Tracker</h1>
 
       {/* Search Bar */}
       <div className="text-center">
-        <input type="text" />
+        <input type="text" className="rounded-lg" />
         <button>{'>'}</button>
       </div>
 
       {/* Results */}
-      <div className="flex gap-5 justify-center">
-        {/* IP Address */}
-        <div className="flex flex-col">
-          <label className="uppercase">IP Address</label>
-          <span>{ipData.ip}</span>
-        </div>
-        {/* Location */}
-        <div className="flex flex-col">
-          <label className="uppercase">Location</label>
-          {ipData.location.region}
-        </div>
-        {/* Timezone */}
-        <div className="flex flex-col">
-          <label className="uppercase">Timezone</label>
-          {ipData.location.timezone}
-        </div>
-        {/* ISP */}
-        <div className="flex flex-col">
-          <label className="uppercase">ISP</label>
-          {ipData.isp}
-        </div>
-      </div>
+      <StatHighlights stats={[
+        {
+          title: "IP Address",
+          data: ipData.ip as string
+        },
+        {
+          title: "Location",
+          data: ipData.location.region as string
+        },
+        {
+          title: "Timezone",
+          data: ipData.location.timezone as string
+        },
+        {
+          title: "ISP",
+          data: ipData.isp as string
+        }
+      ]} />
 
       {/* Backgound */}
       <div>
