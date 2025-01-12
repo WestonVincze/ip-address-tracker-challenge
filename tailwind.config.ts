@@ -11,7 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'very-dark-gray': 'hsl(0, 0%, 17%)',
+        'dark-gray': 'hsl(0, 0%, 59%)',
       },
+      fontSize: {
+        '18px': '18px',
+      }
     },
   },
   plugins: [],
