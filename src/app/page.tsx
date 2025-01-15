@@ -10,17 +10,17 @@ export default async function Home({
   const { ip = "" } = await searchParams;
   const domain = process.env.NEXT_DOMAIN;
 
-  const res = await fetch(`${domain}/api/ipData?ip=${ip}`);
+  const res = await fetch(`${domain}/api/ipData?ip=${ip}&useMock=true`);
   const ipData = await res.json();
 
   return (
     <div className="relative flex flex-col h-screen">
-      <div className="relative pt-8 z-10">
+      <div className="relative p-6 pt-8 z-10">
         {/* Title */}
         <h1 className="text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
-        <SearchBar placeHolder={ipData.ip || ""} />
+        <SearchBar placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
         <div className="mt-8">
