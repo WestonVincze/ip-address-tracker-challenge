@@ -1,19 +1,17 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
 
-export const dynamic = "force-static";
+const baseUrl = "https://api.ipdata.co";
 
 export async function GET(request: NextRequest) {
+  const apiKey = process.env.NEXT_IPDATA_API_KEY;
+
+  // try to parse ip from search params
   const searchParams = request.nextUrl.searchParams;
   const ip = searchParams.get("ip");
-  console.log(ip);
+  const path = ip ? `/${ip}` : '';
 
-  if (!ip) {
-    return NextResponse.json({ error: "IP address is required" }, { status: 400 });
-  }
-
-  const apiKey = process.env.NEXT_IPDATA_API_KEY;
-  const res = await fetch(`https://api.ipdata.co/${ip}?api-key=${apiKey}`);
+  const res = await fetch(`${baseUrl}${path}?api-key=${apiKey}`);
   const ipData = await res.json();
 
-  return Response.json({ ipData });
+  return Response.json(ipData);
 }

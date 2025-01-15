@@ -1,16 +1,40 @@
 'use client';
-import { useEffect } from "react";
-import * as L from "leaflet";
+
+import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-export const GeoMap = () => {
-  useEffect(() => {
-    const map = L.map('map').setView([51.25, -0.09], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-  }, []);
-
-  return <div id="map" style={{ height: '100vh', width: '100%' }}></div>;
+interface GeoMapProps {
+  latitude: number
+  longitude: number 
 }
+
+// Define a custom icon
+const customIcon = icon({
+  iconUrl: '/icon-location.svg', // Path to your custom icon
+  iconSize: [46, 56], // Size of the icon
+  iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+  popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
+});
+
+export const GeoMap = ({ latitude, longitude }: GeoMapProps) => {
+  return (
+    <MapContainer className="h-full w-full">
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      <Marker icon={customIcon} position={[latitude, longitude]}></Marker>
+      <UpdateMapView latitude={latitude} longitude={longitude} />
+    </MapContainer>
+  );
+}
+
+/**
+ * Updates the map view whenever latitude or longitude change
+ */
+const UpdateMapView = ({ latitude, longitude }: GeoMapProps) => {
+  const map = useMap();
+  map.setView([latitude, longitude], 16);
+  return null;
+};

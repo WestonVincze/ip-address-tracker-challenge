@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface SearchBarProps {
-  initial?: string;
+  placeHolder?: string;
 }
 
-export const SearchBar = ({ initial = "" }: SearchBarProps) => {
+export const SearchBar = ({ placeHolder = "" }: SearchBarProps) => {
   const router = useRouter();
-  const [ip, setIp] = useState(initial);
+  const [ip, setIp] = useState("");
 
   const handleSubmit = () => {
     if (!ip) {
@@ -47,6 +47,7 @@ export const SearchBar = ({ initial = "" }: SearchBarProps) => {
         type="text"
         value={ip}
         onChange={e => handleChange(e.target.value)}
+        placeholder={placeHolder}
       />
       <button
         className="shadow-md py-3 px-6 rounded-r-lg bg-very-dark-gray focus:outline-none"
