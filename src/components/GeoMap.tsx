@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-export const Map = () => {
+export const GeoMap = () => {
   useEffect(() => {
     const map = L.map('map').setView([51.25, -0.09], 13);
 

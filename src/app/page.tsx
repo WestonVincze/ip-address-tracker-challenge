@@ -1,13 +1,10 @@
-import Image from "next/image";
-
-import { Map } from "@/components/Map";
+import { GeoMap } from "@/components/GeoMap";
 import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
 
 export default async function Home() {
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`);
-  const ipData = await res.json();
+  // TODO: change base domain to env variable
+  const ipData = await fetch(`http://localhost:3000/api/ipData`)
   console.log(ipData);
 
   return (
@@ -45,7 +42,7 @@ export default async function Home() {
       {/* Backgound */}
       <div className="absolute inset-0 bg-[url('/pattern-bg-desktop.png')] bg-contain"></div>
       <div className="relative z-0 mt-[-75px]">
-        <Map />
+        <GeoMap />
       </div>
     </div>
   );
