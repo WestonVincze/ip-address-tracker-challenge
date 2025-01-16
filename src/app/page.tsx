@@ -15,15 +15,15 @@ export default async function Home({
 
   return (
     <div className="relative flex flex-col h-screen">
-      <div className="relative p-6 pt-8 z-10">
+      <div className="relative p-6 z-10">
         {/* Title */}
-        <h1 className="text-center text-3xl font-medium">IP Address Tracker</h1>
+        <h1 className="mb-6 text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
         <SearchBar placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
-        <div className="mt-8">
+        <div className="mt-10">
           <StatHighlights stats={[
             {
               title: "IP Address",
@@ -46,7 +46,7 @@ export default async function Home({
       </div>
 
       {/* Backgound */}
-      <div className="absolute inset-0 bg-[url('/pattern-bg-desktop.png')] bg-contain"></div>
+      <div className="absolute inset-0 bg-[url('/pattern-bg-mobile.png')] md:bg-[url('/pattern-bg-desktop.png')] bg-contain bg-no-repeat"></div>
       <div className="h-full w-full relative z-0 mt-[-75px]">
         <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />
       </div>

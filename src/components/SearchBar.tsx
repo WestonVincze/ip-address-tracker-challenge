@@ -20,6 +20,7 @@ export const SearchBar = ({ placeHolder = "" }: SearchBarProps) => {
     }
   }
 
+  // TODO: allow for domain address input as well
   // auto format ip address
   const handleChange = (c: string) => {
     // Remove all non-digit and non-dot characters
@@ -41,16 +42,16 @@ export const SearchBar = ({ placeHolder = "" }: SearchBarProps) => {
   }
 
   return(
-    <div className="flex justify-center mt-8">
+    <div className="flex justify-center min-w-min w-full md:w-1/2 lg:w-1/3 mx-auto">
       <input
-        className="shadow-md rounded-l-lg text-very-dark-gray py-3 px-6 focus:outline-none text-18px"
+        className="w-full shadow-md rounded-l-xl text-very-dark-gray py-4 px-6 focus:outline-none text-18px"
         type="text"
         value={ip}
         onChange={e => handleChange(e.target.value)}
         placeholder={placeHolder}
       />
       <button
-        className="shadow-md py-3 px-6 rounded-r-lg bg-very-dark-gray focus:outline-none"
+        className="shadow-md py-3 px-6 rounded-r-xl bg-gray-900 focus:outline-none hover:bg-gray-700 transition-all duration-300"
         onClick={handleSubmit}
       >
         <Image src="icon-arrow.svg" alt="search" width={11} height={14} />
