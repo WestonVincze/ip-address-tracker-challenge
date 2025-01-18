@@ -50,6 +50,7 @@ export const SearchBar = ({ placeHolder = "" }: SearchBarProps) => {
         type="text"
         value={ip}
         onChange={e => handleChange(e.target.value)}
+        onKeyDownCapture={e => e.key === "Enter" && handleSubmit()}
         placeholder={placeHolder}
       />
       <button
