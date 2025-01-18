@@ -1,6 +1,7 @@
 import { GeoMap } from "@/components/GeoMap";
 import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
+import Image from "next/image";
 
 export default async function Home({
   searchParams
@@ -15,9 +16,9 @@ export default async function Home({
 
   return (
     <div className="relative flex flex-col h-screen">
-      <div className="relative p-6 z-10 p-t-[35]">
+      <div className="relative px-6 z-10 pb-0">
         {/* Title */}
-        <h1 className="mb-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
+        <h1 className="my-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
         <SearchBar placeHolder="Search for any IP Address or domain" />
@@ -46,8 +47,25 @@ export default async function Home({
       </div>
 
       {/* Backgound */}
-      <div className="absolute inset-0 bg-[url('/pattern-bg-mobile.png')] md:bg-[url('/pattern-bg-desktop.png')] bg-contain bg-no-repeat"></div>
-      <div className="h-full w-full relative z-0 mt-[-75px]">
+      <div className="absolute inset-0 z-0">
+        <div className="relative h-[300] sm:h-[280]">
+          <Image
+            className="sm:hidden"
+            src="/pattern-bg-mobile.png"
+            alt="Background pattern"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
+          <Image
+            className="hidden sm:block"
+            src="/pattern-bg-desktop.png"
+            alt="Background pattern"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
+        </div>
         <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />
       </div>
     </div>
