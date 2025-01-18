@@ -17,19 +17,6 @@ const customIcon = icon({
   popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
 });
 
-export const GeoMap = ({ latitude, longitude }: GeoMapProps) => {
-  return (
-    <MapContainer className="h-full w-full">
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker icon={customIcon} position={[latitude, longitude]}></Marker>
-      <UpdateMapView latitude={latitude} longitude={longitude} />
-    </MapContainer>
-  );
-}
-
 /**
  * Updates the map view whenever latitude or longitude change
  */
@@ -38,3 +25,15 @@ const UpdateMapView = ({ latitude, longitude }: GeoMapProps) => {
   map.setView([latitude, longitude], 16);
   return null;
 };
+
+export const GeoMap = ({ latitude, longitude }: GeoMapProps) => {
+  return (
+    <MapContainer className="h-full w-full" zoomControl={false} >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker icon={customIcon} position={[latitude, longitude]}></Marker>
+      <UpdateMapView latitude={latitude} longitude={longitude} />
+    </MapContainer>
+  );
+}

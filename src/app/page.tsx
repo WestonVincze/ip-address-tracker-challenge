@@ -15,15 +15,15 @@ export default async function Home({
 
   return (
     <div className="relative flex flex-col h-screen">
-      <div className="relative p-6 z-10">
+      <div className="relative p-6 z-10 p-t-[35]">
         {/* Title */}
-        <h1 className="mb-6 text-center text-3xl font-medium">IP Address Tracker</h1>
+        <h1 className="mb-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
         <SearchBar placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
-        <div className="mt-10">
+        <div className="mt-[45]">
           <StatHighlights stats={[
             {
               title: "IP Address",
@@ -31,11 +31,11 @@ export default async function Home({
             },
             {
               title: "Location",
-              data: `${ipData.city}, ${ipData.region_code}, ${ipData.country_name} ${ipData.postal}`
+              data: `${ipData.city}, ${ipData.region_code} ${ipData.postal}`
             },
             {
               title: "Timezone",
-              data: `${ipData.time_zone.abbr} ${ipData.time_zone.offset}`
+              data: `UTC ${ipData.time_zone.offset}`
             },
             {
               title: "ISP",
