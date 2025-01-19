@@ -1,7 +1,8 @@
+import Image from "next/image";
+
 import { GeoMap } from "@/components/GeoMap";
 import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
-import Image from "next/image";
 
 export default async function Home({
   searchParams
@@ -18,13 +19,13 @@ export default async function Home({
     <div className="relative flex flex-col h-screen">
       <div className="relative px-6 z-10 pb-0">
         {/* Title */}
-        <h1 className="my-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
+        <h1 className="my-[25] md:my-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
-        <SearchBar placeHolder="Search for any IP Address or domain" />
+        <SearchBar initialValue={ipData.ip} placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
-        <div className="mt-[45]">
+        <div className="mt-[25] md:mt-[45]">
           <StatHighlights stats={[
             {
               title: "IP Address",

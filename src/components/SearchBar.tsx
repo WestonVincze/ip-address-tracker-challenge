@@ -2,16 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { isValidDomain, isValidPartialIpAddress, isValidIPAddress } from "@/app/helpers";
 import Image from "next/image";
 
+import { isValidDomain, isValidPartialIpAddress, isValidIPAddress } from "@/app/helpers";
+
 interface SearchBarProps {
+  initialValue?: string;
   placeHolder?: string;
 }
 
-export const SearchBar = ({ placeHolder = "" }: SearchBarProps) => {
+export const SearchBar = ({ placeHolder = "", initialValue = "" }: SearchBarProps) => {
   const router = useRouter();
-  const [ip, setIp] = useState("");
+  const [ip, setIp] = useState(initialValue);
 
   const handleSubmit = () => {
     if (!isValidDomain(ip) && !isValidIPAddress(ip)) return;
