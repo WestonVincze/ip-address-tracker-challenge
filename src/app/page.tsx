@@ -16,7 +16,7 @@ export default async function Home({
   const ipData = await res.json();
 
   return (
-    <div className="relative flex flex-col h-screen">
+    <div className="relative flex flex-col">
       <div className="relative px-6 z-10 pb-0">
         {/* Title */}
         <h1 className="my-[25] md:my-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
@@ -48,7 +48,7 @@ export default async function Home({
       </div>
 
       {/* Backgound */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 flex flex-col h-screen">
         <div className="relative h-[300] sm:h-[280]">
           <Image
             className="sm:hidden object-cover"
@@ -67,7 +67,9 @@ export default async function Home({
             priority
           />
         </div>
-        <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />
+        <div className="flex-grow">
+          <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />
+        </div>
       </div>
     </div>
   );
