@@ -12,7 +12,7 @@ export default async function Home({
   const { ip = "" } = await searchParams;
   const domain = process.env.NEXT_DOMAIN;
 
-  const res = await fetch(`${domain}/api/ipData?ip=${ip}&useMock=true`);
+  const res = await fetch(`${domain}/api/ipData?ip=${ip}`);
   const ipData = await res.json();
 
   return (
@@ -51,20 +51,20 @@ export default async function Home({
       <div className="absolute inset-0 z-0">
         <div className="relative h-[300] sm:h-[280]">
           <Image
-            className="sm:hidden"
+            className="sm:hidden object-cover"
             src="/pattern-bg-mobile.png"
             alt="Background pattern"
-            layout="fill"
-            objectFit="cover"
+            fill
             quality={100}
+            priority
           />
           <Image
-            className="hidden sm:block"
+            className="hidden sm:block object-cover"
             src="/pattern-bg-desktop.png"
             alt="Background pattern"
-            layout="fill"
-            objectFit="cover"
+            fill
             quality={100}
+            priority
           />
         </div>
         <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />

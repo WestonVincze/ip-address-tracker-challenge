@@ -1,14 +1,28 @@
 # IP Address Tracker Challenge
 
-This project is a challenge for Frontend Mentor - it displays various geographic data and a map with a marker for a given ip address (defaulting to the IP of the client device).
+## About
+
+This project is a challenge for Frontend Mentor - it displays various geographic data with a map and marker based on the provided IP address or domain. If none are provided, the client device's IP is used.
+
+[Challenge Instructions](./original-instructions.md)
+
+Design files can be found in `design` directory
 
 ## Getting Started
 
-### Setup
+### API
 
-First, you'll need to have a valid API key for `ipify`. You can set up an account for free on [their website](https://www.ipify.org/).
+First, you'll need to have a valid API key for `ipdata`. You can set up an account for free on [their website](https://ipdata.co/).
 
-Create a `.env.local` file and add the variable `NEXT_PUBLIC_API_KEY` with your API key as the value.
+Create a `.env.local` file and add the variable `NEXT_IPDATA_API_KEY` with your API key as the value.
+
+### Mock Data (Optional)
+
+If no API key is found, mock data will be used, which can be found in `app/api/ipData/mockResponse.json`
+
+** You can always return mock data by adding the query parameter `useMock=true` to the `ipData` request. Or by adding the environment variable `NEXT_USEMOCK=true` to `.env.local` **
+
+### Dependencies
 
 Install dependencies with npm:
 
@@ -23,3 +37,13 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Credits
+
+Developed by [Weston Vincze](https://westonvincze.com)
+
+Challenge: [Frontend Mentor](https://www.frontendmentor.io/)
+
+IP data: [ipdata](https://ipdata.co/)
+
+Map: [LeafletJS](https://leafletjs.com/)
