@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { icon } from "leaflet";

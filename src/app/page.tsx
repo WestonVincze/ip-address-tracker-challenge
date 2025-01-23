@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { GeoMap } from "@/components/GeoMap";
 import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
+import GeoMap from "@/components/DynamicGeoMap";
 
 export default async function Home({
   searchParams
