@@ -11,7 +11,7 @@ export const StatHighlights = (
       {stats.map((stats, i) => (
         <div key={i} className="flex flex-col gap-1 md:gap-2 md:w-1/4 md:border-l md:first:border-l-0 md:pl-8 md:first:pl-0">
           <h4 className="text-xs font-bold uppercase text-dark-gray">{stats.title}</h4>
-          <p className="text-xl lg:text-2xl font-[500] text-very-dark-gray">{stats.data}</p>
+          <p className="text-xl lg:text-2xl font-bold text-very-dark-gray">{stats.data}</p>
         </div>
       ))}
     </div>
