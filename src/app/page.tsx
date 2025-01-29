@@ -3,6 +3,7 @@ import Image from "next/image";
 import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
 import GeoMap from "@/components/DynamicGeoMap";
+import { IpData } from "@/types";
 
 export default async function Home({
   searchParams
@@ -13,7 +14,7 @@ export default async function Home({
   const domain = process.env.NEXT_DOMAIN;
 
   const res = await fetch(`${domain}/api/ipData?ip=${ip}`);
-  const ipData = await res.json();
+  const ipData: IpData = await res.json();
 
   return (
     <div className="relative flex flex-col">

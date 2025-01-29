@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import mockResponse from "./mockResponse.json";
+import { IpData } from "@/types";
 
 const baseUrl = "https://api.ipdata.co";
 
@@ -19,7 +20,7 @@ export async function GET(request: NextRequest) {
   const path = ip ? `/${ip}` : '';
 
   const res = await fetch(`${baseUrl}${path}?api-key=${apiKey}`);
-  const ipData = await res.json();
+  const ipData: IpData = await res.json();
 
   return Response.json(ipData);
 }
