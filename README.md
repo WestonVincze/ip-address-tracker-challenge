@@ -8,6 +8,10 @@ This project is a challenge for Frontend Mentor - it displays various geographic
 
 Design files can be found in `design` directory
 
+## Purpose
+
+The primary purpose of this project was for me to experiment with tailwind. Although I prefer writing my own CSS, I recognize the potential performance benefits of CSS-in-JS and the importance of knowing widely used libraries like tailwind.
+
 ## Getting Started
 
 ### API
