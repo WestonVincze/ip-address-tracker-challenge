@@ -4,6 +4,7 @@ import { StatHighlights } from "@/components/StatHighlights";
 import { SearchBar } from "@/components/SearchBar";
 import GeoMap from "@/components/DynamicGeoMap";
 import { IpData } from "@/types";
+import { buildLocationString, buildTimezoneString } from "@/helpers";
 
 export default async function Home({
   searchParams
@@ -34,11 +35,11 @@ export default async function Home({
             },
             {
               title: "Location",
-              data: `${ipData.city}, ${ipData.region_code} ${ipData.postal}`
+              data: buildLocationString(ipData.city, ipData.region_code, ipData.postal)
             },
             {
               title: "Timezone",
-              data: `UTC ${ipData.time_zone.offset}`
+              data: buildTimezoneString(ipData.time_zone.offset)
             },
             {
               title: "ISP",
