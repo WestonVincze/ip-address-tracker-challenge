@@ -14,25 +14,24 @@ export default {
         'very-dark-gray': 'hsl(0, 0%, 17%)',
         'dark-gray': 'hsl(0, 0%, 59%)',
       },
-      // Custom Font Size 
       fontSize: {
         '18px': '18px',
       },
-      // Custom heights
       height: {
         '280': '280px',
         '300': '380px',
       },
-      // Custom widths
       maxWidth: {
         '555': '555px',
         '1110': '1110px',
       },
-      // Custom Spacing
       spacing: {
         '25': '25px',
         '35': '35px',
         '45': '45px'
+      },
+      fontWeight: {
+        semibold: '500'
       }
     },
   },
