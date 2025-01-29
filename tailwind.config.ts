@@ -24,13 +24,13 @@ export default {
         '300': '380px',
       },
       // Custom widths
-      width: {
+      maxWidth: {
         '555': '555px',
         '1110': '1110px',
       },
       // Custom Spacing
       spacing: {
-        '25': '24px',
+        '25': '25px',
         '35': '35px',
         '45': '45px'
       }

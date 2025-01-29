@@ -21,13 +21,13 @@ export default async function Home({
     <div className="relative flex flex-col">
       <div className="relative px-6 z-10 pb-0">
         {/* Title */}
-        <h1 className="my-[25] md:my-[35] text-center text-3xl font-medium">IP Address Tracker</h1>
+        <h1 className="my-25 md:my-35 text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
         <SearchBar initialValue={ipData.ip} placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
-        <div className="mt-[25] md:mt-[45]">
+        <div className="mt-25 md:mt-45">
           <StatHighlights stats={[
             {
               title: "IP Address",
@@ -51,7 +51,7 @@ export default async function Home({
 
       {/* Backgound */}
       <div className="absolute inset-0 z-0 flex flex-col h-screen">
-        <div className="relative h-[300] sm:h-[280]">
+        <div className="relative h-300 sm:h-280">
           <Image
             className="sm:hidden object-cover"
             src="/pattern-bg-mobile.png"

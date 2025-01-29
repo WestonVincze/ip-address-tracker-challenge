@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import { isValidDomain, isValidPartialIpAddress, isValidIPAddress } from "@/app/helpers";
+import { isValidDomain, isValidPartialIpAddress, isValidIPAddress } from "@/helpers";
 
 interface SearchBarProps {
   initialValue?: string;
@@ -18,6 +18,8 @@ export const SearchBar = ({ placeHolder = "", initialValue = "" }: SearchBarProp
   const [error, setError] = useState(false);
 
   const handleSubmit = () => {
+    if (!ip) return;
+
     if (!isValidDomain(ip) && !isValidIPAddress(ip)) {
       toast.error("Please enter a valid ip address or domain");
       setError(true);
@@ -54,7 +56,7 @@ export const SearchBar = ({ placeHolder = "", initialValue = "" }: SearchBarProp
   }
 
   return(
-    <div className={`flex justify-center min-w-min w-full max-w-[555] mx-auto rounded-xl ${error ? 'outline outline-2 outline-red-500' : ''}`}>
+    <div className={`flex justify-center min-w-min w-full max-w-555 mx-auto rounded-xl ${error ? 'outline outline-2 outline-red-500' : ''}`}>
       <input
         className={`w-full shadow-md rounded-l-xl text-very-dark-gray py-4 px-6 focus:outline-none text-18px`}
         type="text"
