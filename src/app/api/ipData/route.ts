@@ -19,8 +19,15 @@ export async function GET(request: NextRequest) {
   const ip = searchParams.get("ip");
   const path = ip ? `/${ip}` : '';
 
-  const res = await fetch(`${baseUrl}${path}?api-key=${apiKey}`);
-  const ipData: IpData = await res.json();
-
-  return Response.json(ipData);
+  try {
+    const res = await fetch(`${baseUrl}${path}?api-key=${apiKey}`);
+    if (!res.ok) {
+      throw new Error(`Error fetching IP data: ${res.statusText}`);
+    }
+    const ipData: IpData = await res.json();
+    return Response.json(ipData);
+  } catch (error) {
+    console.error(error);
+    return Response.json({ error: `Unexpected error: ${(error as Error).message}` }, { status: 500 });
+  }
 }

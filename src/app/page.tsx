@@ -15,7 +15,7 @@ export default async function Home({
   const domain = process.env.NEXT_DOMAIN;
 
   const res = await fetch(`${domain}/api/ipData?ip=${ip}`);
-  const ipData: IpData = await res.json();
+  const ipData: IpData | null = await res.json();
 
   return (
     <div className="relative flex flex-col">
@@ -24,26 +24,26 @@ export default async function Home({
         <h1 className="my-25 md:my-35 text-center text-3xl font-medium">IP Address Tracker</h1>
 
         {/* Search Bar */}
-        <SearchBar initialValue={ipData.ip} placeHolder="Search for any IP Address or domain" />
+        <SearchBar initialValue={ipData?.ip} placeHolder="Search for any IP Address or domain" />
 
         {/* Results */}
         <div className="mt-25 md:mt-45">
           <StatHighlights stats={[
             {
               title: "IP Address",
-              data: ipData.ip as string
+              data: ipData?.ip as string
             },
             {
               title: "Location",
-              data: buildLocationString(ipData.city, ipData.region_code, ipData.postal)
+              data: buildLocationString(ipData?.city, ipData?.region_code, ipData?.postal)
             },
             {
               title: "Timezone",
-              data: buildTimezoneString(ipData.time_zone.offset)
+              data: buildTimezoneString(ipData?.time_zone?.offset)
             },
             {
               title: "ISP",
-              data: ipData.asn.name as string
+              data: ipData?.asn?.name as string
             }
           ]} />
         </div>
@@ -70,7 +70,7 @@ export default async function Home({
           />
         </div>
         <div className="flex-grow">
-          <GeoMap longitude={parseFloat(ipData.longitude)} latitude={parseFloat(ipData.latitude)} />
+          <GeoMap longitude={parseFloat(ipData?.longitude || "-79.42")} latitude={parseFloat(ipData?.latitude || "43.665")} />
         </div>
       </div>
     </div>

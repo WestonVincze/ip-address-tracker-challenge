@@ -18,10 +18,8 @@ export const SearchBar = ({ placeHolder = "", initialValue = "" }: SearchBarProp
   const [error, setError] = useState(false);
 
   const handleSubmit = () => {
-    if (!ip) return;
-
-    if (!isValidDomain(ip) && !isValidIPAddress(ip)) {
-      toast.error("Please enter a valid ip address or domain");
+    if (!ip || !isValidDomain(ip) && !isValidIPAddress(ip)) {
+      toast.error("Please enter a valid ip address");
       setError(true);
       return;
     }
