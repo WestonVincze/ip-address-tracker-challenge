@@ -7,7 +7,12 @@ export const isValidIPAddress = (c: string) => /^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|
 
 // Formatting
 export const buildLocationString = (city?: string | null, region?: string | null, postal?: string | null) => {
-  return city ? `${city}` : '' +  region ? `, ${region}` : '' + postal ? ` ${postal}` : '';
+  const parts = [];
+  if (city) parts.push(city);
+  if (region) parts.push(`, ${region}`);
+  if (postal) parts.push(` ${postal}`);
+
+  return parts.join('');
 }
 
 export const buildTimezoneString = (timezone?: string) => {
